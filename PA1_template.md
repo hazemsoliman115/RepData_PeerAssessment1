@@ -2,6 +2,7 @@
 
 
 ## Loading and preprocessing the data
+## First read the data, then convert the date into class date, and finaly print the first few elements
 
 ```r
 ## Read the data
@@ -27,6 +28,7 @@ head(data)
 
 
 ## What is mean total number of steps taken per day?
+## we use the aggregate function to find the mean for each day, then hist is used to plot the histogram. the mean and median are printed at the end
 
 ```r
 ## get the mean across each day
@@ -58,6 +60,7 @@ median(meandata$x, na.rm = TRUE)
 
 
 ## What is the average daily activity pattern?
+## again we use the aggregate function, and the plot function to plot the time series. finally the maximum interval is found
 
 ```r
 ## get the mean across intervals
@@ -88,6 +91,7 @@ dailydata$Group.1[which.max(dailydata$x)]
 
 
 ## Imputing missing values
+## we replace each na value with the correspinding interval mean, the mean and median are printed at the end. The mean is still the same but the median is different. The histogram shows a larger peak at the mean value.
 
 ```r
 sum(is.na(data$steps))
@@ -153,6 +157,7 @@ median(meandatanona$x, na.rm = TRUE)
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
+## the weekdays have a larger peak at an earlier time in the morning .
 
 ```r
 ## vector of weekend days

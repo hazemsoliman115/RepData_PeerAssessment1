@@ -66,6 +66,9 @@ img {
 
 <div id="loading-and-preprocessing-the-data" class="section level2">
 <h2>Loading and preprocessing the data</h2>
+</div>
+<div id="first-read-the-data-then-convert-the-date-into-class-date-and-finaly-print-the-first-few-elements" class="section level2">
+<h2>First read the data, then convert the date into class date, and finaly print the first few elements</h2>
 <pre class="r"><code>## Read the data
 unzip(&quot;activity.zip&quot; )
 data&lt;- read.csv(&quot;./activity.csv&quot;,  sep=&quot;,&quot;, header = TRUE)
@@ -85,6 +88,9 @@ head(data)</code></pre>
 </div>
 <div id="what-is-mean-total-number-of-steps-taken-per-day" class="section level2">
 <h2>What is mean total number of steps taken per day?</h2>
+</div>
+<div id="we-use-the-aggregate-function-to-find-the-mean-for-each-day-then-hist-is-used-to-plot-the-histogram.-the-mean-and-median-are-printed-at-the-end" class="section level2">
+<h2>we use the aggregate function to find the mean for each day, then hist is used to plot the histogram. the mean and median are printed at the end</h2>
 <pre class="r"><code>## get the mean across each day
 meandata &lt;- aggregate(data$steps, list(data$date), mean, na.action = na.omit, na.rm=TRUE)
 
@@ -100,6 +106,9 @@ median(meandata$x, na.rm = TRUE)</code></pre>
 </div>
 <div id="what-is-the-average-daily-activity-pattern" class="section level2">
 <h2>What is the average daily activity pattern?</h2>
+</div>
+<div id="again-we-use-the-aggregate-function-and-the-plot-function-to-plot-the-time-series.-finally-the-maximum-interval-is-found" class="section level2">
+<h2>again we use the aggregate function, and the plot function to plot the time series. finally the maximum interval is found</h2>
 <pre class="r"><code>## get the mean across intervals
 dailydata &lt;- aggregate(data$steps, list(data$interval), mean, na.action = na.omit, na.rm=TRUE)
 
@@ -114,6 +123,9 @@ which.max(dailydata$x)</code></pre>
 </div>
 <div id="imputing-missing-values" class="section level2">
 <h2>Imputing missing values</h2>
+</div>
+<div id="we-replace-each-na-value-with-the-correspinding-interval-mean-the-mean-and-median-are-printed-at-the-end.-the-mean-is-still-the-same-but-the-median-is-different.-the-histogram-shows-a-larger-peak-at-the-mean-value." class="section level2">
+<h2>we replace each na value with the correspinding interval mean, the mean and median are printed at the end. The mean is still the same but the median is different. The histogram shows a larger peak at the mean value.</h2>
 <pre class="r"><code>sum(is.na(data$steps))</code></pre>
 <pre><code>## [1] 2304</code></pre>
 <pre class="r"><code>## copy data into a new data frame
@@ -146,6 +158,9 @@ median(meandatanona$x, na.rm = TRUE)</code></pre>
 </div>
 <div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level2">
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>
+</div>
+<div id="the-weekdays-have-a-larger-peak-at-an-earlier-time-in-the-morning-." class="section level2">
+<h2>the weekdays have a larger peak at an earlier time in the morning .</h2>
 <pre class="r"><code>## vector of weekend days
 weekend = c(&quot;Saturday&quot;,&quot;Sunday&quot;)
 
